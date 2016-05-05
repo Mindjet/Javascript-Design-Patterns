@@ -8,21 +8,57 @@ var TeslaModelS = function(){
 
 }
 
+/*-----------method 1----------------*/
+// TeslaModelS.prototype.go = function() {
+// 	console.log('TeslaModelS goes');
+// };
+
+// TeslaModelS.prototype.stop = function() {
+// 	console.log('TeslaModelS stops');
+// };
+
+/*-----------method 2----------------*/
+// TeslaModelS.prototype = function(){
+
+// 	var go = function(){
+// 		console.log('TeslaModelS goes');
+// 	}
+
+/*-----------method 3----------------*/
+// 	var stop = function(){
+// 		console.log('TeslaModelS stops');
+// 	}
+
+// 	return {
+// 		go:go,
+// 		stop:stop
+// 	}
+// }();
+
+TeslaModelS.prototype = {
+
+	go:function(){console.log('TeslaModelS goes');},
+
+	stop:function(){console.log('TeslaModelS stops');}
+
+}
+
+
 window.onload=function(){
 
 	document.getElementById('btn1').onclick = function(){
-		TeslaModelS.pressGasPedal();
-		TeslaModelS.pressGasPedal_1();
+		TeslaModelS.prototype.go();
 	}
 
 	document.getElementById('btn2').onclick = function(){
-		TeslaModelS.pressBrakePedal();
-		TeslaModelS.pressBrakePedal_1();
+		TeslaModelS.stop(); //undefined
 	}
 
 	document.getElementById('btn3').onclick = function(){
-		console.log(TeslaModelS.name); //undefined
-		console.log(TeslaModelS.text);
+
+		model = new TeslaModelS();
+		console.log(model.name); 
+		console.log(TeslaModelS.name); //null
 	}
 }
 
